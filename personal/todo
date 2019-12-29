@@ -4,13 +4,11 @@ https://github.com/unixorn/awesome-zsh-plugins
 
 aria2
 
-
 vim llvm youcompleteme
-
 
 gtags-cscope
 
+/usr/man
 python 2.7/3.0, design pattern
-
-/usr/man /home_nbu/dafan/c++, c/c++, /usr/include, libstd STL boost, c++11 c++14 c++17
+c/c++, /usr/include, libstd STL boost, c++11 c++14 c++17
 
