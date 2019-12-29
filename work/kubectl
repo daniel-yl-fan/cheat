@@ -1,0 +1,5 @@
+# pod name
+kubectl get pod -o custom-columns=:metadata.name,:status.phase 
+
+# execute
+kubectl exec ${container_pod_name} --container=${container_name}

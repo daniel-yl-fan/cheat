@@ -1,0 +1,21 @@
+# container id
+docker ps --format "{{.ID}}    {{.Names}}"
+
+# excute
+docker exec --interactive --tty bash --rcfile /root/.bashrc
+
+# pull
+docker pull
+
+# run
+docker run --interactive --tty --privileged --network host --detach \
+           --volume /var/run/docker.sock:/var/run/docker.sock \
+           --volume /root/.ssh/id_rsa:/root/.ssh/id_rsa \
+           --volume /root/.ssh/known_hosts:/root/.ssh/known_hosts \
+           --volume /root/.bashrc:/root/.bashrc \
+           --name ${container_version} \
+           --workdir=/root \
+           --env HOME="/root" \
+           ${container_image} \
+           bash --rcfile /root/.bashrc
+

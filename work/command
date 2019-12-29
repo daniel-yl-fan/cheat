@@ -14,3 +14,16 @@ kill -9 $$
 # who is online
 whoami who w users id last lastlog
 
+# colorized printf
+# RED
+printf "\x1B[91m \x1B[0m \n"
+# GREEN
+printf "\x1B[92m \x1B[0m \n"
+# CYAN
+printf "\x1B[93m \x1B[0m \n"
+# BLUE
+printf "\x1B[94m \x1B[0m \n"
+# MAGENTA
+printf "\x1B[95m \x1B[0m \n"
+
+
