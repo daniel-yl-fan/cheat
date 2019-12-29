@@ -32,6 +32,10 @@ df -h
 
 date --date='@1571034633'
 
+ln --symbolic --force source_file target_file
+
+netstat --verbose --numeric --wide --all --program --inet --sctp --tcp
+
 When they are not quoted, $* and $@ are the same.
 "$*" expands to a single word "$1c$2c...". Usually c is a space, but it's actually the first character of IFS, 
 "$@" expands to separate words: "$1" "$2" ...
@@ -66,3 +70,10 @@ unset ARRAY
 # associative array
 declare -A ASSOCIATIVE_ARRAY
 ASSOCIATIVE_ARRAY=([foo]=bar [baz]=foobar)
+
+if [ -f "file" ] ; then
+fi
+if [ ! -f "file" ] ; then
+fi
+if [ -d "file" ] ; then
+fi

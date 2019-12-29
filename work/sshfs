@@ -2,4 +2,12 @@
 sshfs -o reconnect,follow_symlinks,ServerAliveInterval=15,ServerAliveCountMax=3 user@host:/remote/dir local/dir
 
 # unmount
-umount --lazy --force local/dir
+fusermount -u local_dir
+umount --lazy --force local_dir
+
+# rm: cannot remove '.nfs000000000001ea6800000f21': Device or resource busy
+# lsof - stands for list open files.
+# lsof +f -- /path/to/mount/point
+# lsof +D /path/to/mount/point
+# kill -9 PID
+

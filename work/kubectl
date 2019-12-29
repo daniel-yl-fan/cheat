@@ -3,3 +3,33 @@ kubectl get pod -o custom-columns=:metadata.name,:status.phase
 
 # execute
 kubectl exec ${container_pod_name} --container=${container_name}
+
+#    kubectl get pods -o wide
+#    kubectl get daemonsets -o wide
+#    kubectl get deployments -o wide
+#    kubectl get nodes --show-labels
+#    kubectl get pods --namespace=default -o wide
+#    kubectl get pods --namespace=kube-system -o wide
+#    kubectl get danmnets
+#    kubectl get danmnets -o yaml
+#    kubectl get danmeps -o yaml
+#    kubectl  delete  pod    --grace-period=0
+#    kubectl  delete  daemonsets
+#    kubectl  delete  deployments
+#    kubectl  create -f /manifest.yaml
+#    kubectl describe pod 
+#    kubectl describe daemonsets
+#    kubectl describe deployments
+#    kubectl exec -it
+#    kubectl edit pod_name
+#    kubectl edit daemonsets pod_name
+#    kubectl edit deployment pod_name
+#    kubectl get pod pod_name -o yaml
+#    kubectl get pod pod_name -o json
+#    kubectl delete pod pod_name --force --grace-period=0
+#    kubectl set image pod/pod_name container_name=image:latest
+#    kubectl set env pod/pod_name --list
+#    kubectl set env deployment/pod_name --list
+#    kubectl set env deployment/pod_name KEY_1=VALUE_1
+
+

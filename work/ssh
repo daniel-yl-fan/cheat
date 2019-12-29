@@ -1,3 +1,11 @@
+yes | ssh-copy-id -f user@host
+
+ssh -t user@host1    ssh user@host2
+
+ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+
+ssh-keygen
+
 # ServerAliveInterval=15 option asked sshfs to check if the server is alive every 15 seconds.
 # ServerAliveCountMax=3 allows the server to not respond for up to three alive checks.
 # The result is that if the server is unavailable for 1 minute, sshfs will reconnect to the server.
