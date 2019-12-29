@@ -1,0 +1,16 @@
+# where command is
+alias whereis="whereis"
+
+# reset terminal
+alias reset="reset"
+
+# directory stack
+alias pushd="pushd `pwd`"
+alias dirs="dirs -v"
+
+# exit shell without save command history
+kill -9 $$
+
+# who is online
+whoami who w users id last lastlog
+
