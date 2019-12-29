@@ -1,0 +1,73 @@
+tcpdump --interface=any -l -nn -tttt -XX -vvv --absolute-tcp-sequence-numbers --snapshot-length=0 -# host
+
+tcpdump --interface=any -l -nn -tttt -XX -vvv --absolute-tcp-sequence-numbers --snapshot-length=0 -# host
+
+tshark -2 -n -V -S "" -O diameter,sctp,frame -d sctp.port==1-65535,diameter -r 
+
+tshark -2 -n -V -S "" -O diameter,sctp,frame -d sctp.port==1-65535,diameter -r 
+
+#
+# tcpdump -i any -l -nn -tttt -XX -vvv -S -s1 -# host 169.254.2.57 -w /root/logs/dtd.pcap
+# 
+#  -i any : Listen on all interfaces just to see if you are seeing any traffic.
+#  -i eth0 : Listen on the eth0 interface.
+#  -D : Show the list of available interfaces
+#  -l : Line-readable output (for viewing as you save, or sending to other commands)
+#  -A : Display output in ASCII.
+#  -n : Dont resolve hostnames.
+#  -nn : Dont resolve hostnames or port names.
+#  -q : Be less verbose (more quiet) with your output.
+#  -t : Give human-readable timestamp output.
+#  -tttt : Give maximally human-readable timestamp output.
+#  -X : Show the packets contents in both hex and ascii.
+#  -XX : Same as -X, but also shows the ethernet header.
+#  -v, -vv, -vvv : Increase the amount of packet information you get back.
+#  -c : Only get x number of packets and then stop.
+#  -s : . Use -s0 to get everything.
+#  -S : Print absolute sequence numbers.
+# 
+#  Expressions
+#  Type options are: host, net, and port.
+#  Direction lets you do src, dst, and combinations thereof.
+#  Proto(col) lets you designate: tcp, udp, icmp, ah, and many more.
+
+ # tcpdump -i any
+ # tcpdump -i eth0
+ # tcpdump host 1.2.3.4
+ # tcpdump net 1.2.3.0/24
+ # tcpdump port 3389 
+ # tcpdump src 2.3.4.5 
+ # tcpdump dst 3.4.5.6
+ # tcpdump src port 1025
+ # tcpdump icmp
+ # tcpdump ip6
+ # tcpdump portrange 21-23
+ # tcpdump less 32 
+ # tcpdump greater 64 
+ # tcpdump <= 128
+ # tcpdump port 80 -w capture_file
+ # tcpdump -r capture_file
+
+# and or &&
+# or or ||
+# not or !
+
+#  tcpdump -nnvvS src 10.5.2.3 and dst port 3389
+#  tcpdump -nvX src net 192.168.0.0/16 and dst net 10.0.0.0/8 or 172.16.0.0/16
+#  tcpdump dst 192.168.0.2 and src net and not icmp
+#  tcpdump -vv src mars and not dst port 22
+#  tcpdump 'src 10.0.2.4 and (dst port 3389 or 22)'
+
+# tshark -2 -n -V -S "" -O diameter,frame  -d tcp.port==38681-38684,diameter -r /root/logs/dtd.pcap | vim -
+# tshark -2 -r dtd.cap -d sctp.port==5703,diameter -d sctp.port==5804,diameter -d sctp.port==32820,diameter -d sctp.port==60540,diameter -n -V -S "" -O diameter,sctp | vim -
+# 
+#  -r <infile>              set the filename to read from (- to read from stdin)
+#  -2                       perform a two-pass analysis
+#  -V                       add output of packet tree        (Packet Details)
+#  -O <protocols>           Only show packet details of these protocols, comma separated
+#  -S <separator>           the line separator to print between packets
+#  -x                       add output of hex and ASCII dump (Packet Bytes)
+#  -T pdml|ps|psml|json|jsonraw|ek|tabs|text|fields|?   format of text output (def: text)
+#  -t a|ad|d|dd|e|r|u|ud|?  output format of time stamps (def: r: rel. to first)
+
+
