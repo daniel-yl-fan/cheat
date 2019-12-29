@@ -1,0 +1,5 @@
+# mount
+sshfs -o reconnect,follow_symlinks,ServerAliveInterval=15,ServerAliveCountMax=3 user@host:/remote/dir local/dir
+
+# unmount
+umount --lazy --force local/dir

@@ -26,4 +26,43 @@ printf "\x1B[94m \x1B[0m \n"
 # MAGENTA
 printf "\x1B[95m \x1B[0m \n"
 
+free -h
 
+df -h
+
+date --date='@1571034633'
+
+When they are not quoted, $* and $@ are the same.
+"$*" expands to a single word "$1c$2c...". Usually c is a space, but it's actually the first character of IFS, 
+"$@" expands to separate words: "$1" "$2" ...
+$* foo.txt
+"$*" "foo.txt"
+"$@" "foo.txt"
+$* foo.txt bar.txt
+"$*" "foo.txt bar.txt"
+"$@" "foo.txt" "bar.txt"
+
+IFS stands for "internal field separator". It is used by the shell to determine how to do word splitting, i. e. how to recognize word boundaries.
+The default value for IFS consists of whitespace characters (to be precise: space, tab and newline). Each character can be a word boundary.
+The first character of IFS is special: It is used to delimit words in the output when using the special $* variable
+
+declare -a ARRARY
+ARRARY=()
+ARRARY=(foo bar) 
+ARRARY[2]=foobar
+for ELEMENT in ${ARRARY[@]}; do
+    printf "${ELEMENT}\n"
+done
+
+ARRARY+=barfoo
+echo ${ARRAY[@]}
+echo ${ARRAY[*]}
+echo ${ARRAY[2]}
+echo ${#ARRARY[*]}      # Number of items in the array
+echo ${!my_array[@]}    # index
+unset ARRAY[0]
+unset ARRAY
+
+# associative array
+declare -A ASSOCIATIVE_ARRAY
+ASSOCIATIVE_ARRAY=([foo]=bar [baz]=foobar)
