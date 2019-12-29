@@ -1,21 +1,42 @@
 # container id
 docker ps --format "{{.ID}}    {{.Names}}"
 
-# excute
+# all containers
+docker ps -a
+
 docker exec --interactive --tty bash --rcfile /root/.bashrc
+docker exec --interactive --tty bash -c 'while true ; do sleep 10 ; done'
 
-# pull
-docker pull
+docker pull <registry>
+docker push <registry>
+docker images
+docker load --input image.tar.gz
+docker commit container_id image:latest
+docker save -o file image:latest
+docker rmi -f dtdimage:latest
 
-# run
-docker run --interactive --tty --privileged --network host --detach \
+docker run --interactive --tty --privileged --network=host --pid=host --user=root --detach \
            --volume /var/run/docker.sock:/var/run/docker.sock \
            --volume /root/.ssh/id_rsa:/root/.ssh/id_rsa \
            --volume /root/.ssh/known_hosts:/root/.ssh/known_hosts \
            --volume /root/.bashrc:/root/.bashrc \
-           --name ${container_version} \
+           --name=${container_name} \
+           --hostname=${container_name} \
            --workdir=/root \
            --env HOME="/root" \
            ${container_image} \
            bash --rcfile /root/.bashrc
+
+docker attach
+docker stop
+docker rm -f
+docker rm -v $(docker ps -a -q -f status=exited)
+
+docker logs -f --tail=0 container_id > /path/to/log
+
+docker logs -f --tail=all container_id > /path/to/log
+
+docker cp container_id:file file
+
+docker describe container_name
 
