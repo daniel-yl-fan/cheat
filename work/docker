@@ -40,3 +40,5 @@ docker cp container_id:file file
 
 docker describe container_name
 
+systemctl start docker
+
