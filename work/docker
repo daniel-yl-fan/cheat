@@ -27,7 +27,7 @@ docker run --interactive --tty --privileged --network=host --pid=host --user=roo
            ${container_image} \
            bash --rcfile /root/.bashrc
 
-docker attach
+docker attach ${conatiner_id}
 docker stop
 docker rm -f
 docker rm -v $(docker ps -a -q -f status=exited)

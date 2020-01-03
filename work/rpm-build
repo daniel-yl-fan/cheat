@@ -1,0 +1,33 @@
+# mkdir -p /root/rpmbuild/{SOURCES,SPECS,BUILD,RPMS}
+# /root/rpmbuild/SPECS/package.spec
+# /root/rpmbuild/SOURCES/package.tar.gz
+# rpmbuild -bb --clean /root/rpmbuild/SPECS/package.spec
+
+%define _topdir          /root/rpmbuild
+%define _tmppath         %{_topdir}/tmp
+%define _architecture    x86_64
+
+Name:      package-name
+Version:   xx.yy.zz
+Release:   rr
+License:   GPL
+Group:     package-group
+URL:       http://github.com
+Summary:   %{name}-%{version}-%{release}.%{_architecture} by foo@github.com
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}.%{_architecture}
+SOURCE0:   %{name}-%{version}-%{release}.%{_architecture}.tar.gz
+Prefix:    /
+
+%description
+README.md
+
+%prep
+%setup -q -n %{name}-%{version}-%{release}.%{_architecture}
+
+rm -rf %{buildroot}
+
+mkdir -p  %{buildroot}/tmp_dir
+cp -a -r * %{buildroot}/tmp_dir
+
+%files
+/usr/local/file-name

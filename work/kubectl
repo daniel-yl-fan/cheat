@@ -32,4 +32,7 @@ kubectl exec ${container_pod_name} --container=${container_name}
 #    kubectl set env deployment/pod_name --list
 #    kubectl set env deployment/pod_name KEY_1=VALUE_1
 
+kubectl logs ${container_pod_name} --container=${container_name} > file.log
+kubectl logs --follow=true --tail=1 ${container_pod_name} --container=${container_name} > file.log
+
 

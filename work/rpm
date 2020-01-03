@@ -2,5 +2,7 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 rpm --install 
 
-rpm2cpio file.rpm | cpio -idmv
+rpm --query --list --info --package package.rpm
+
+rpm2cpio  package.rpm | cpio -idmv
 
