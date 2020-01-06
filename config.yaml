@@ -35,20 +35,23 @@ cheatpaths:
   # Note that the paths and tags listed below are just examples. You may freely
   # change them to suit your needs.
   - name: community
-    path: ~/cheat/community
+  #  path: ~/cheat/community
+    path: /media/sf_Documents/cheat/community
     tags: [ community ]
     readonly: true
 
   # Maybe your company or department maintains a repository of cheatsheets as
   # well. It's probably sensible to list those second.
   - name: work
-    path: ~/cheat/work
+  #  path: ~/cheat/work
+    path: /media/sf_Documents/cheat/work
     tags: [ work ]
     readonly: false
 
   # If you have personalized cheatsheets, list them last. They will take
   # precedence over the more global cheatsheets.
-  - name: personal
-    path: ~/cheat/personal
-    tags: [ personal ]
-    readonly: false
+  - name: skywind3000
+  #  path: ~/cheat/personal
+    path: /media/sf_Documents/cheat/skywind3000
+    tags: [ skywind3000 ]
+    readonly: true
