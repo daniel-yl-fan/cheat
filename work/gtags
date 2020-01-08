@@ -1,0 +1,3 @@
+ag --filename-pattern "^.*\.h$|^.*\.c$|^.*\.cpp$|^.*\.cxx$" > source-files
+gtags -f source-files
+

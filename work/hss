@@ -1,0 +1,21 @@
+# Gerrit
+git clone ssh://dafan@bhimscm51.apac.nsn-net.net:29418/ims_hss1
+git clone ssh://dafan@bhimscm51.apac.nsn-net.net:29418/ims_hss2
+git clone ssh://dafan@bhimscm51.apac.nsn-net.net:29418/ims_diameter
+
+# lab
+Cbis https://10.67.31.45/  (new/new#123)   80vcpu+200G mem
+CBAM: 10.67.30.132 (cbam/Cbam#123)
+
+# hss build server
+# 10.67.30.50 
+10.67.30.52
+
+# hss test server
+10.67.34.200
+
+# hss git server
+10.67.34.203
+
+# umts tp
+superad/yt_xk39b
