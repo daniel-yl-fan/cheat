@@ -36,22 +36,22 @@ cheatpaths:
   # change them to suit your needs.
   - name: community
   #  path: ~/cheat/community
-    path: /media/sf_Documents/cheat/community
+    path: /home/cheatsheets/community
     tags: [ community ]
     readonly: true
 
   # Maybe your company or department maintains a repository of cheatsheets as
   # well. It's probably sensible to list those second.
-  - name: work
+  - name: commands
   #  path: ~/cheat/work
-    path: /media/sf_Documents/cheat/work
-    tags: [ work ]
+    path: /home/cheatsheets/commands
+    tags: [ commands ]
     readonly: false
 
   # If you have personalized cheatsheets, list them last. They will take
   # precedence over the more global cheatsheets.
   - name: skywind3000
   #  path: ~/cheat/personal
-    path: /media/sf_Documents/cheat/skywind3000
+    path: /home/cheatsheets/skywind3000
     tags: [ skywind3000 ]
     readonly: true

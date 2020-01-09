@@ -1,2 +1,2 @@
-git clone git@github.com:cheat/cheatsheets.git /media/sf_Documents/cheat/community
-git clone https://github.com/skywind3000/awesome-cheatsheets.git /media/sf_Documents/cheat/skywind3000
+git clone https://github.com/cheat/cheatsheets.git /home/cheatsheets/community
+git clone https://github.com/skywind3000/awesome-cheatsheets.git /home/cheatsheets/skywind3000
