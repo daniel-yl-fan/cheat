@@ -36,7 +36,7 @@ cheatpaths:
   # change them to suit your needs.
   - name: community
   #  path: ~/cheat/community
-    path: /home/cheatsheets/community
+    path: ~/cheatsheets/community
     tags: [ community ]
     readonly: true
 
@@ -44,7 +44,7 @@ cheatpaths:
   # well. It's probably sensible to list those second.
   - name: commands
   #  path: ~/cheat/work
-    path: /home/cheatsheets/commands
+    path: ~/cheatsheets/commands
     tags: [ commands ]
     readonly: false
 
@@ -52,6 +52,9 @@ cheatpaths:
   # precedence over the more global cheatsheets.
   - name: skywind3000
   #  path: ~/cheat/personal
-    path: /home/cheatsheets/skywind3000
+    path: ~/cheatsheets/skywind3000
     tags: [ skywind3000 ]
     readonly: true
+
+# git clone https://github.com/cheat/cheatsheets.git ~/cheatsheets/community
+# git clone https://github.com/skywind3000/awesome-cheatsheets.git ~/cheatsheets/skywind3000

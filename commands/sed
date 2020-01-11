@@ -2,6 +2,6 @@
 sed --in-place --regexp-extended 's/(foo)bar/\1BAR/g' file
 
 # append
-ed --in-place --expression="\$aFOOBAR" file
+sed --in-place --expression="\$aFOOBAR" file
 
 

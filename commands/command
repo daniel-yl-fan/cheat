@@ -90,3 +90,7 @@ fi
 
 ifdown enp0s3
 ifup   enp0s3
+
+/etc/sysconfig/network-scripts/ifcfg-eth0
+ONBOOT=no
+ONBOOT=yes
