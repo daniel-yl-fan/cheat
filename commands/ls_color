@@ -1,0 +1,193 @@
+Blue = 34
+Green = 32
+Light Green = 1;32
+Cyan = 36
+Red = 31
+Purple = 35
+Brown = 33
+Yellow = 1;33
+Bold White = 1;37
+Light Grey = 0;37
+Black = 30
+Dark Grey= 1;30
+
+The first number is the style (1=bold), followed by a semicolon, and then the actual number of the color, possible styles (effects) are:
+
+0   = default colour
+1   = bold
+4   = underlined
+5   = flashing text (disabled on some terminals)
+7   = reverse field (exchange foreground and background color)
+8   = concealed (invisible)
+
+The possible backgrounds:
+
+40  = black background
+41  = red background
+42  = green background
+43  = orange background
+44  = blue background
+45  = purple background
+46  = cyan background
+47  = grey background
+100 = dark grey background
+101 = light red background
+102 = light green background
+103 = yellow background
+104 = light blue background
+105 = light purple background
+106 = turquoise background
+107 = white background
+
+All possible colors:
+
+30  = black
+31  = red
+32  = green
+33  = orange
+34  = blue
+35  = purple
+36  = cyan
+37  = grey
+90  = dark grey
+91  = light red
+92  = light green
+93  = yellow
+94  = light blue
+95  = light purple
+96  = turquoise
+97  = white
+
+You can also change other kinds of files when using the ls command by defining each kind with:
+
+bd = (BLOCK, BLK)   Block device (buffered) special file
+cd = (CHAR, CHR)    Character device (unbuffered) special file
+di = (DIR)  Directory
+do = (DOOR) [Door][1]
+ex = (EXEC) Executable file (ie. has 'x' set in permissions)
+fi = (FILE) Normal file
+ln = (SYMLINK, LINK, LNK)   Symbolic link. If you set this to ‘target’ instead of a numerical value, the color is as for the file pointed to.
+mi = (MISSING)  Non-existent file pointed to by a symbolic link (visible when you type ls -l)
+no = (NORMAL, NORM) Normal (non-filename) text. Global default, although everything should be something
+or = (ORPHAN)   Symbolic link pointing to an orphaned non-existent file
+ow = (OTHER_WRITABLE)   Directory that is other-writable (o+w) and not sticky
+pi = (FIFO, PIPE)   Named pipe (fifo file)
+sg = (SETGID)   File that is setgid (g+s)
+so = (SOCK) Socket file
+st = (STICKY)   Directory with the sticky bit set (+t) and not other-writable
+su = (SETUID)   File that is setuid (u+s)
+tw = (STICKY_OTHER_WRITABLE)    Directory that is sticky and other-writable (+t,o+w)
+*.extension =   Every file using this extension e.g. *.rpm = files with the ending .rpm
+
+LS_COLORS="$LS_COLORS:di=1;33"  .bashrc 
+
+# show ls colors, run in a new shell
+
+dircolors --print-database
+
+dircolors -b >/dev/null
+IFS=:
+for ls_color in ${LS_COLORS[@]}; do # For all colors
+    color=${ls_color##*=}
+    ext=${ls_color%%=*}
+    echo -en "\E[${color}m${ext}\E[0m " # echo color and extension
+done
+echo
+
+The database in question is a globally readable file which can be overridden depending on your terminal type.
+The database file is initially set to /etc/DIR_COLORS then overridden with one of the following.
+The first being the least precedent and the last being the most.
+
+/etc/DIR_COLORS.$TERM
+/etc/DIR_COLORS.$TERM
+$HOME/.dircolors
+$HOME/.dircolors.$TERM
+$HOME/.dir_colors
+$HOME/.dir_colors.$TERM
+
+This configuration file has several options:
+
+COLOR - ether:
+tty (add colour to ls when output is on the command line)
+all (all colours to ls on the command line and when piping i.e. ls > file.txt will have colour coding information in it)
+none (switch off)
+OPTIONS - strictly not related to LS_COLORS. This allows you to add extra options to the ls command.
+TERM - one line per terminal type that supports colour.
+EIGHTBIT - 1 (on) or 0 (off) to allow 8-bit output.
+and finally the colour definitions for file type and file extensions.
+
+On most systems the ls command has been aliased to use the coloured option by default:
+alias "ls=ls --color=auto"
+
+Key	/etc/DIR_COLORS name	Notes
+no	NORMAL, NORM	Global default, although everything should be something
+fi	FILE	Normal file
+di	DIR	Directory
+ln	SYMLINK, LINK, LNK	Symbolic link. If you set this to 'target' instead of a numerical value, the colour is as for the file pointed to.
+pi	FIFO, PIPE	Named pipe
+do	DOOR	Door
+bd	BLOCK, BLK	Block device
+cd	CHAR, CHR	Character device
+or	ORPHAN	Symbolic link pointing to a non-existent file
+so	SOCK	Socket
+su	SETUID	File that is setuid (u+s)
+sg	SETGID	File that is setgid (g+s)
+tw	STICKY_OTHER_WRITABLE	Directory that is sticky and other-writable (+t,o+w)
+ow	OTHER_WRITABLE	Directory that is other-writable (o+w) and not sticky
+st	STICKY	Directory with the sticky bit set (+t) and not other-writable
+ex	EXEC	Executable file (i.e. has 'x' set in permissions)
+mi	MISSING	Non-existent file pointed to by a symbolic link (visible when you type ls -l)
+lc	LEFTCODE, LEFT	Opening terminal code
+rc	RIGHTCODE, RIGHT	Closing terminal code
+ec	ENDCODE, END	Non-filename text
+*.extension	 	Every file using this extension e.g. *.jpg
+The keys (above) are assigned a colour pattern which is a semi-colon separated list of colour codes.
+
+
+Effects
+Code	Property
+00	Default colour
+01	Bold
+04	Underlined
+05	Flashing text
+07	Reversetd
+08	Concealed
+Colours
+Code	Property
+30	Black
+31	Red
+32	Green
+33	Orange
+34	Blue
+35	Purple
+36	Cyan
+37	Grey
+Backgrounds
+Code	Property
+40	Black background
+41	Red background
+42	Green background
+43	Orange background
+44	Blue background
+45	Purple background
+46	Cyan background
+47	Grey background
+Extra colours
+Code	Property
+90	Dark grey
+91	Light red
+92	Light green
+93	Yellow
+94	Light blue
+95	Light purple
+96	Turquoise
+97	White
+100	Dark grey background
+101	Light red background
+102	Light green background
+103	Yellow background
+104	Light blue background
+105	Light purple background
+106	Turquoise background
+107	White background
+
