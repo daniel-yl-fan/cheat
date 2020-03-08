@@ -1,0 +1,43 @@
+ --color-code=Keyword=red
+
+    stringKind        = kind{"String", syntaxhighlight.String}
+	keywordKind       = kind{"Keyword", syntaxhighlight.Keyword}
+	commentKind       = kind{"Comment", syntaxhighlight.Comment}
+	typeKind          = kind{"Type", syntaxhighlight.Type}
+	literalKind       = kind{"Literal", syntaxhighlight.Literal}
+	punctuationKind   = kind{"Punctuation", syntaxhighlight.Punctuation}
+	plaintextKind     = kind{"Plaintext", syntaxhighlight.Plaintext}
+	tagKind           = kind{"Tag", syntaxhighlight.Tag}
+	htmlTagKind       = kind{"HTMLTag", syntaxhighlight.HTMLTag}
+	htmlAttrNameKind  = kind{"HTMLAttrName", syntaxhighlight.HTMLAttrName}
+	htmlAttrValueKind = kind{"HTMLAttrValue", syntaxhighlight.HTMLAttrValue}
+	decimalKind       = kind{"Decimal", syntaxhighlight.Decimal}
+
+    LightColorPalettes = ColorPalettes{
+		stringKind:        "brown",
+		keywordKind:       "darkblue",
+		commentKind:       "lightgrey",
+		typeKind:          "teal",
+		literalKind:       "teal",
+		punctuationKind:   "darkred",
+		plaintextKind:     "darkblue",
+		tagKind:           "blue",
+		htmlTagKind:       "lightgreen",
+		htmlAttrNameKind:  "blue",
+		htmlAttrValueKind: "green",
+		decimalKind:       "darkblue",
+	}
+
+	DarkColorPalettes = ColorPalettes{
+		stringKind:        "brown",
+		keywordKind:       "blue",
+		commentKind:       "darkgrey",
+		typeKind:          "turquoise",
+		literalKind:       "turquoise",
+		punctuationKind:   "red",
+		plaintextKind:     "blue",
+		tagKind:           "blue",
+		htmlTagKind:       "lightgreen",
+		htmlAttrNameKind:  "blue",
+		htmlAttrValueKind: "green",
+		decimalKind:       "blue",
