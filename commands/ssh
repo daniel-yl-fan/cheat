@@ -9,5 +9,3 @@ ssh-keygen
 # ServerAliveInterval=15 option asked sshfs to check if the server is alive every 15 seconds.
 # ServerAliveCountMax=3 allows the server to not respond for up to three alive checks.
 # The result is that if the server is unavailable for 1 minute, sshfs will reconnect to the server.
-
-sshpass -p <password> ssh <username>@<hostname/ip>

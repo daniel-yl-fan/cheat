@@ -1,0 +1,67 @@
+# submit code to gerrit.
+git add foo
+git commit
+git commit --amend
+git push origin HEAD:refs/for/master
+
+When a commit is pushed for review, Gerrit stores it in a staging area which is a branch in the special refs/changes/ namespace. A change ref has the format refs/changes/XX/YYYY/ZZ where YYYY is the numeric change number, ZZ is the patch set number and XX is the last two digits of the numeric change number, e.g. refs/changes/20/884120/1.
+
+The Change-Id is a SHA-1 that is prefixed with an uppercase I
+Change-Id: Ic8aaa0728a43936cd4c6e1ed590e01ba8f0fbf5b
+
+#  Fetch Change
+    git fetch https://gerrithost/myProject refs/changes/74/67374/2 && git checkout FETCH_HEAD
+The fetch command can be copied from the download commands in the change screen.
+
+#  Push new Patch Set
+    git commit --amend
+    git push origin HEAD:refs/for/master
+
+Push Patch Set
+    // fetch and checkout the change // (checkout command copied from change screen)
+    $ git fetch https://gerrithost/myProject refs/changes/74/67374/2 && git checkout FETCH_HEAD
+
+    // rework the change
+    $ git add <path-of-reworked-file>
+    ...
+
+    // amend commit
+    $ git commit --amend
+
+    // push patch set
+    $ git push origin HEAD:refs/for/master
+NOTE Never amend a commit that is already part of a central branch.
+
+Rebase a Change locally
+  // update the remote tracking branches
+  $ git fetch
+
+  // fetch and checkout the change
+  // (checkout command copied from change screen)
+  $ git fetch https://gerrithost/myProject refs/changes/74/67374/2 && git checkout FETCH_HEAD
+
+  // do the rebase
+  $ git rebase origin/master
+
+  // resolve conflicts if needed and stage the conflict resolution
+  ...
+  $ git add <path-of-file-with-conflicts-resolved>
+
+  // continue the rebase
+  $ git rebase --continue
+
+  // push the commit with the conflict resolution as new patch set
+  $ git push origin HEAD:refs/for/master
+
+Work-in-Progress (WIP) changes 
+    git push origin HEAD:refs/for/master%wip
+    Alternatively, click WIP from the More menu on the Change screen. The Change screen updates with a yellow header, indicating that the change is in a Work-in-Progress state.
+    To mark the change as ready for review, append %ready to your push request.
+    $ git push origin HEAD:refs/for/master%ready
+    Alternatively, click Start Review from the Change screen.
+
+
+# abandon
+git reset --soft HEAD^1
+
+git reset --hard origin/master

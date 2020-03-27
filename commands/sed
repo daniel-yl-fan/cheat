@@ -4,4 +4,7 @@ sed --in-place --regexp-extended 's/(foo)bar/\1BAR/g' file
 # append
 sed --in-place --expression="\$aFOOBAR" file
 
+# insert
+echo "abcdefg" | sed 's/d/#&/'
+
 

@@ -1,16 +1,26 @@
+#https://www.ostechnix.com/list-useful-bash-keyboard-shortcuts/
+#https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/
+#https://gist.github.com/michaelcoyote/745d8a6cf293c4bf7e31
+
 #Meta key
-Alt-a append
+Alt-a  append
 Alt-b  back word
-Alt-c change
+Alt-c  change
 Alt-e  forward word end
 Alt-f  find
 Alt-h/j/k/l  move around
 Alt-i  insert
-Alt-p paste
-Alt-s erase
+Alt-m  mark
+Alt-n  next search result
+Alt-o  open new line
+Alt-p  paste
+Alt-r  replace char
+Alt-s  del char and insert mode
+Alt-u  undo
 Alt-v  visual
 Alt-w  forward word
-Alt-u  undo change
+Alt-x  erase
+
 
 Ctrl+c: Cancel the running command or task on the terminal.
 Ctrl+d: Logout from the terminal. It is similar to ‘exit‘ command.
@@ -25,15 +35,17 @@ Ctrl+w: undo insert
 Ctrl+-: undo
 Ctrl+t: swap one charactor
 Ctrl+h: backspace
+Ctrl+?: backspace
 
 Ctrl+p: up one line
 Ctrl+n: down one line
 Ctrl+j: new line
 Ctrl+m: enter
 
-Ctrl+l: Clear, Alt-d j enter Normal mode, then Ctrl-l clear screen
+Ctrl+l: clear screen
 Ctrl+r: search
-Ctrl+i: completion
+Ctrl+i: completion (tab)
+Ctrl+[: Esc
 
 !!                 Repeat last command
 !<keyword>         Repeat most recent command

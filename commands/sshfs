@@ -1,6 +1,8 @@
 # mount
 sshfs -o reconnect,follow_symlinks,ServerAliveInterval=15,ServerAliveCountMax=3 user@host:/remote/dir local/dir
 
+sshfs -o reconnect,follow_symlinks,ServerAliveInterval=15,ServerAliveCountMax=3 dafan@10.67.30.52:/home/dafan/workspace /home/dafan/workspace
+
 # unmount
 fusermount -u local_dir
 umount --lazy --force local_dir
