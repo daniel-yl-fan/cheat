@@ -34,31 +34,11 @@ cheatpaths:
   #
   # Note that the paths and tags listed below are just examples. You may freely
   # change them to suit your needs.
-  - name: community
-  #  path: ~/cheat/community
-    path: ~/local/cheatsheets/community
-    tags: [ community ]
-    readonly: true
-
-  # Maybe your company or department maintains a repository of cheatsheets as
-  # well. It's probably sensible to list those second.
   - name: commands
   #  path: ~/cheat/work
     path: ~/local/cheatsheets/commands
     tags: [ commands ]
     readonly: false
 
-  # If you have personalized cheatsheets, list them last. They will take
-  # precedence over the more global cheatsheets.
-  - name: skywind3000
-  #  path: ~/cheat/personal
-    path: ~/local/cheatsheets/skywind3000
-    tags: [ skywind3000 ]
-    readonly: true
-
-  - name: hss
-    path: ~/cheatsheets.hss
-    tags: [ hss ]
-    readonly: true
 # git clone https://github.com/cheat/cheatsheets.git ~/cheatsheets/community
 # git clone https://github.com/skywind3000/awesome-cheatsheets.git ~/cheatsheets/skywind3000
