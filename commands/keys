@@ -2,6 +2,8 @@
 #https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/
 #https://gist.github.com/michaelcoyote/745d8a6cf293c4bf7e31
 
+bind -p | ag -v not | ag -v self
+
 #Meta key
 Alt-a  append
 Alt-b  back word
@@ -22,30 +24,28 @@ Alt-w  forward word
 Alt-x  erase
 
 
-Ctrl+c: Cancel the running command or task on the terminal.
-Ctrl+d: Logout from the terminal. It is similar to ‘exit‘ command.
-Ctrl+z: Pauses running command.
-Ctrl+s: Freeze the Cursor.
-Ctrl+q: Resume the Cursor.
-
-Ctrl+u: cut left
-Ctrl+k: cut right
-Ctrl+y: Paste
-Ctrl+w: undo insert
-Ctrl+-: undo
-Ctrl+t: swap one charactor
-Ctrl+h: backspace
+Ctrl+[: Esc
+Ctrl+_: undo
 Ctrl+?: backspace
 
-Ctrl+p: up one line
-Ctrl+n: down one line
-Ctrl+j: new line
-Ctrl+m: enter
-
-Ctrl+l: clear screen
-Ctrl+r: search
+Ctrl+c: Cancel the running command or task on the terminal.
+Ctrl+d: Logout from the terminal. It is similar to ‘exit‘ command.
+Ctrl+h: backspace
 Ctrl+i: completion (tab)
-Ctrl+[: Esc
+Ctrl+j: new line
+Ctrl+k: cut right
+Ctrl+l: clear screen
+Ctrl+m: enter
+Ctrl+n: down one line
+Ctrl+p: up one line
+Ctrl+q: Resume the Cursor.
+Ctrl+r: search
+Ctrl+s: Freeze the Cursor.
+Ctrl+t: tranpose charactors
+Ctrl+u: discard line
+Ctrl+w: cut backward
+Ctrl+y: yank
+Ctrl+z: Pauses running command.
 
 !!                 Repeat last command
 !<keyword>         Repeat most recent command

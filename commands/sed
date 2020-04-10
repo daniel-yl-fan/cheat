@@ -1,3 +1,23 @@
+-n, --quiet, --silent: Same as standard -n option.
+
+-e script, --expression=script: Same as standard -e option.
+
+-f script-file, --file=script-file: Same as standard -f option.
+
+-i[SUFFIX], --in-place[=SUFFIX]: This option is used to edit file in place. If suffix is provided, it takes a backup of the original file, otherwise it overwrites the original file.
+
+-l N, --line-lenght=N: This option sets the line length for l command to N characters.
+
+--posix: This option disables all GNU extensions.
+
+-r, --regexp-extended: This option allows to use extended regular expressions rather than basic regular expressions.
+
+-u, --unbuffered: When this option is provided, the SED loads minimal amount of data from the input files and flushes the output buffers more often. It is useful for editing the output of "tail -f" when you do not want to wait for the output.
+
+-z, --null-data: By default, the SED separates each line by a new-line character. If NULL-data option is provided, it separates the lines by NULL characters.
+
+sed -f commands.txt books.txt
+
 # replace
 sed --in-place --regexp-extended 's/(foo)bar/\1BAR/g' file
 
@@ -7,4 +27,18 @@ sed --in-place --expression="\$aFOOBAR" file
 # insert
 echo "abcdefg" | sed 's/d/#&/'
 
+# To remove leading spaces:
+sed -i -r 's/^\s+//g' <file>
 
+# To remove empty lines and print results to stdout:
+sed '/^$/d' <file>
+sed -e '1d'
+
+# To replace newlines in multiple lines:
+sed ':a;N;$!ba;s/\n//g' <file>
+
+# To insert a line before a matching pattern:
+sed '/Once upon a time/i\Chapter 1'
+
+# To add a line after a matching pattern:
+sed '/happily ever after/a\The end.'

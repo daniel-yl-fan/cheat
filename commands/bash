@@ -1,0 +1,376 @@
+Shebang Hashbang
+!/usr/bin/env bash
+!/bin/false – Do nothing, but return a non-zero exit status, indicating failure.
+Used to prevent stand-alone execution of a script file intended for execution in a specific context,
+such as by the . command from sh/bash, source from csh/tcsh, or as a .profile, .cshrc, or .login file.
+
+Single quotes: '...' removes the special meaning of every character between the quotes.
+                    Everything inside single quotes becomes a literal string.
+                    The only character that you can't safely enclose in single quotes is a single quote.
+
+Double quotes: "..." prevents some substitutions but allows others.
+                    Every substitution that begins with a dollar sign $ is performed.
+                    Backslash escaping is also performed. No word splitting or filename expansion is performed.
+
+Backticks: `...` is the legacy command substitution syntax; deprecated in favor of $(...) but still permitted for historical reasons.
+
+Backslash: Putting \ in front of a metacharacter removes its special meaning.
+            This works inside double quotes, or in the absence of quotes. It does not work inside single quotes.
+
+whoami    who    w    users    id    last    lastlog
+
+cp ./filename{,-old}
+mv ./filename{,-old}
+rename expression replacement file
+
+&& (run second command if the first is successful)
+|| (run second command if the first is failed)
+; (run second command regardless of success of first one)
+2>&1 (redirect stdout and stderr to a file)
+2>/dev/null
+
+set -o errexit
+set -o nounset
+set -o pipefail
+readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+command cat <file>     \cat <file>    #bypass alias
+
+free -h
+
+find /  -name foo 2> /dev/null
+
+df -h
+
+ln --symbolic --force source_file target_file
+
+netstat --verbose --numeric --wide --all --program --inet --sctp --tcp
+
+When they are not quoted, $* and $@ are the same.
+"$*" expands to a single word "$1c$2c...". Usually c is a space, but it's actually the first character of IFS,
+"$@" expands to separate words: "$1" "$2" ...
+$* foo.txt
+"$*" "foo.txt"
+"$@" "foo.txt"
+$* foo.txt bar.txt
+"$*" "foo.txt bar.txt"
+"$@" "foo.txt" "bar.txt"
+
+IFS stands for "internal field separator". It is used by the shell to determine how to do word splitting, i. e. how to recognize word boundaries.
+The default value for IFS consists of whitespace characters (to be precise: space, tab and newline). Each character can be a word boundary.
+The first character of IFS is special: It is used to delimit words in the output when using the special $* variable
+
+# basic loop
+for i in 1 2 3 4 5 6 7 8 9 10
+do
+  echo $i
+done
+
+# loop ls command results
+for var in `ls -alF`
+do
+  echo $var
+done
+
+# loop over all the JPG files in the current directory
+for jpg_file in *.jpg
+do
+  echo $jpg_file
+done
+
+# loop specified number of times
+for i in `seq 1 10`
+do
+  echo $i
+done
+
+# loop specified number of times: the C/C++ style
+for ((i=1;i<=10;++i))
+do
+  echo $i
+done
+
+# loop specified number of times: the brace expansion
+for i in {1..10}
+do
+  echo $i
+done
+
+ARRARY+=barfoo
+echo ${ARRAY[@]}
+echo ${ARRAY[*]}
+echo ${ARRAY[2]}
+echo ${#ARRARY[*]}      # Number of items in the array
+echo ${!my_array[@]}    # index
+unset ARRAY[0]
+unset ARRAY
+
+# associative array
+declare -A ASSOCIATIVE_ARRAY
+ASSOCIATIVE_ARRAY=([foo]=bar [baz]=foobar)
+
+declare -a ARRARY
+ARRARY=()
+ARRARY=(foo bar)
+ARRARY[2]=foobar
+for ELEMENT in ${ARRARY[@]}; do
+    printf "${ELEMENT}\n"
+done
+
+if [ -f "file" ] ; then
+fi
+if [ ! -f "file" ] ; then
+fi
+if [ -d "file" ] ; then
+fi
+
+# multi-user.target: analogous to runlevel 3
+# graphical.target: analogous to runlevel 5
+# systemctl get-default
+#
+# systemctl set-default TARGET.target
+# systemctl set-default multi-user.target
+# Removed /etc/systemd/system/default.target.
+# Created symlink /etc/systemd/system/default.target → /usr/lib/systemd/system/multi-user.target.
+# systemctl set-default graphical.target
+
+/etc/sysconfig/network-scripts/ifcfg-eth0
+ONBOOT=no
+ONBOOT=yes
+
+# To display all hardware details:
+sudo lshw
+
+# To list currently loaded kernel modules:
+lsmod
+
+# To display cpu hardware stats:
+cat /proc/cpuinfo
+
+# To display memory hardware stats:
+cat /proc/meminfo
+
+# To output the kernel ring buffer:
+dmesg
+
+Bash history handling with multiple terminals
+The bash session that is saved is the one for the terminal that is closed the latest.
+If you want to save the commands for every session,
+    export PROMPT_COMMAND='history -a'
+To quote the manpage: “If set, the value is executed as a command prior to issuing each primary prompt.”
+
+# To see most used top 10 commands:
+history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10
+
+
+# To print the date in a format suitable for affixing to file names:
+date +"%Y%m%d_%H%M%S"
+
+# To convert a Unix timestamp to Date (Linux)
+date -d @1440359821
+date --date='@1571034633'
+
+# To convert a Unix timestamp to Date (OSX)
+date -r 1440359821
+
+# To pretty print the json:
+jq "." < filename.json
+
+# To access the value at key "foo":
+jq '.foo'
+
+# To access first list item:
+jq '.[0]'
+
+# to slice and dice:
+jq '.[2:4]'
+jq '.[:3]'
+jq '.[-2:]'
+
+# To list every process on the system:
+ps aux
+
+# To list a process tree:
+ps axjf
+
+# To list every process owned by foouser:
+ps -aufoouser
+
+# To list every process with a user-defined format:
+ps -eo pid,user,command
+
+# Exclude grep from your grepped output of ps.
+# Add [] to the first letter. Ex: sshd -> [s]shd
+ps aux | grep '[h]ttpd'
+
+pkill <process-name>
+
+# To kill a process gracefully:
+kill -15 <pid>
+
+# To kill a process forcefully:
+kill -9 <pid>
+
+# exit shell without save command history
+kill -9 $$
+
+# To display available libraries:
+ldconfig -p
+
+# To update library resources:
+ldconfig
+
+# To display libraries and file location:
+ldd
+
+
+# To show all available block devices along with their partitioning schemes:
+lsblk
+
+# To show SCSI devices:
+lsblk --scsi
+
+# To show a specific device:
+lsblk /dev/sda
+
+# To fetch info about filesystems:
+lsblk --fs
+
+# For JSON, LIST or TREE output formats use the following flags:
+lsblk --json
+lsblk --list
+lsblk --tree # default view
+
+
+# To list all processes accessing a particular file/directory:
+lsof <path>
+
+# To list all files open for a particular user:
+lsof -u <username>
+
+# To list all files a process has open:
+lsof -p <pid>
+
+# To list all files open mounted at /mount/point:
+# (Particularly useful for finding which process(es) are using a mounted USB stick or CD/DVD.)
+lsof +f -- <mount-point>
+
+# To convert a man page to pdf:
+man -t bash | ps2pdf - bash.pdf
+
+# To view the ascii chart:
+man 7 ascii
+
+# convert text to html
+filename=mkdir && enscript ${filename} --color=true --continuous-page-numbers --header=${filename}.ps --footer=${filename}.ps --language=html --output=/home/dafan/web/${filename}.html
+
+# convert text to pdf
+filename=mkdir && enscript ${filename} --color=true --continuous-page-numbers --header=${filename}.ps --footer=${filename}.ps --language=PostScript --output=- | ps2pdf - ~/web/${filename}.pdf
+
+
+# To create nested directories:
+mkdir -p foo/bar/baz
+
+# To create foo/bar and foo/baz directories:
+mkdir -p foo/{bar,baz}
+
+# To create the foo/bar, foo/baz, foo/baz/zip and foo/baz/zap directories:
+mkdir -p foo/{bar,baz/{zip,zap}}
+
+numfmt --to=iec-i --suffix=B --padding=7 1024
+
+
+# To concat columns from files:
+paste <file>...
+
+# To list the files in the current directory in three columns:
+ls | paste - - -
+
+# To combine pairs of lines from a file into single lines:
+paste -s -d '\t\n' <file>
+
+# To number the lines in a file, similar to nl(1):
+sed = <file> | paste -s -d '\t\n' - -
+
+# To create a colon-separated list of directories named bin, suitable for use in the PATH environment variable:
+find / -name bin -type d | paste -s -d : -
+
+
+# To patch one file:
+patch <file> < <patch-file>
+
+# To reverse a patch:
+patch -R <file> < <patch-file>
+
+# To patch all files in a directory, adding any missing new files:
+# -p strips leading slashes
+$ cd dir
+$ patch -p1 -i <dir> <patch-file>
+
+# To patch files in a directory, with one level (/) offset:
+patch -p1 -r <dir> < <patch-file>
+
+# To test if a packet size of 1500 bytes is supported (to check the MTU for example):
+ping -s 1500 -c 10 -M do <host>
+
+
+
+# Basic example of server with python
+# Will start a Web Server in the current directory on port 8000
+# go to http://127.0.0.1:8000
+
+# Python v2.7
+python -m SimpleHTTPServer
+# Python 3
+python -m http.server 8000
+
+# Pretty print a json
+python -m json.tool
+
+# To lowercase all files and folders in current directory:
+rename 'y/A-Z/a-z/' *
+
+# To replace 'sometext' with 'replacedby' in all files in current directory:
+rename 's/sometext/replacedby/' *
+
+# To remove a file with this inode:
+find /tmp/ -inum 6666 -exec rm -i '{}' \;
+
+# To replace : with a new line:
+echo $PATH | tr ":" "\n"
+echo $PATH | tr -t ":" \n
+
+# To remove all occurance of "ab":
+echo aabbcc | tr -d "ab"         # ouput: cc
+
+# To complement "aa":
+# ("Complement" means to keep "aa", and replace all others with "x")
+echo aabbccd | tr -c "aa" x       # output: aaxxxxx (no newline)
+
+# To complement "ab\n":
+echo aabbccd | tr -c "ab\n" x    #output: aabbxxx (with newline)
+
+# To preserve all alpha(-c). ":-[:digit:] etc" will be translated to "\n". sequeeze mode:
+echo $PATH | tr -cs "[:alpha:]" "\n"
+
+# To convert an ordered list to an unordered list:
+echo "1. /usr/bin\n2. /bin" | tr -cs " /[:alpha:]\n" "+"
+
+trash-put           trash files and directories.
+trash-empty         empty the trashcan(s).
+trash-list          list trashed files.
+trash-restore       restore a trashed file.
+trash-rm            remove individual files from the trashcan.
+
+infocmp screen
+tput
+while sleep 1;do tput sc;tput setaf 2;tput cup 0 $(($(tput cols)-29));date;tput rc;done&
+
+One Time Task Scheduling
+at : execute commands at specified time.
+atq : lists the pending jobs of users.
+atrm : delete jobs by their job number.
+echo "cd /home/dafan/web && python -m SimpleHTTPServer" | at 07:00
+
+shopt
+shopt -u sourcepath
