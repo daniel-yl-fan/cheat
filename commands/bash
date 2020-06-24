@@ -1,5 +1,5 @@
 Shebang Hashbang
-!/usr/bin/env bash
+#!/usr/bin/env bash
 !/bin/false – Do nothing, but return a non-zero exit status, indicating failure.
 Used to prevent stand-alone execution of a script file intended for execution in a specific context,
 such as by the . command from sh/bash, source from csh/tcsh, or as a .profile, .cshrc, or .login file.
@@ -18,6 +18,8 @@ Backslash: Putting \ in front of a metacharacter removes its special meaning.
             This works inside double quotes, or in the absence of quotes. It does not work inside single quotes.
 
 whoami    who    w    users    id    last    lastlog
+
+GNU Bash Shell Expansion
 
 cp ./filename{,-old}
 mv ./filename{,-old}
@@ -323,6 +325,27 @@ ping -s 1500 -c 10 -M do <host>
 python -m SimpleHTTPServer
 # Python 3
 python -m http.server 8000
+# CGI
+python -m CGIHTTPServer 8000
+cgi-bin/hello-world.bash
+htbin/hello-world.bash
+
+#!/usr/bin/env bash
+echo "Content-type: text/html"
+echo ""
+echo '<html>'
+echo   '<head>'
+echo     '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
+echo     '<title>env.sh</title>'
+echo   '</head>'
+echo   '<body>'
+echo     '<h2>Environment Variables:</h2>'
+echo     '<pre>'
+             /usr/bin/env
+echo     '</pre>'
+echo   '</body>'
+echo '</html>'
+exit 0
 
 # Pretty print a json
 python -m json.tool
@@ -362,9 +385,7 @@ trash-list          list trashed files.
 trash-restore       restore a trashed file.
 trash-rm            remove individual files from the trashcan.
 
-infocmp screen
-tput
-while sleep 1;do tput sc;tput setaf 2;tput cup 0 $(($(tput cols)-29));date;tput rc;done&
+trap "echo hello" WINCH
 
 One Time Task Scheduling
 at : execute commands at specified time.
@@ -374,3 +395,28 @@ echo "cd /home/dafan/web && python -m SimpleHTTPServer" | at 07:00
 
 shopt
 shopt -u sourcepath
+
+Ctrl+D must be pressed twice to exit
+export IGNOREEOF=1
+
+dafan()
+{
+}
+export -f dafan
+
+Source-highlight
+
+cat ~/local/cheatsheets/hss2/ansi | xargs echo -e
+
+du -h  | ag "G\t"
+ag -G '\.cfg$' FOOBAR
+
+ag --list-file-types
+
+# Capturing multiple line output into a Bash variable
+# the double-quoted version of the variable (echo "$RESULT") preserves internal spacing of the value exactly as it is
+# represented in the variable — newlines, tabs, multiple blanks and all — whereas (2) the unquoted version (echo
+# $RESULT) replaces each sequence of one or more blanks, tabs and newlines with a single space. Thus (1) preserves the
+# shape of the input variable, whereas (2) creates a potentially very long single line of output with 'words' separated
+# by single spaces (where a 'word' is a sequence of non-whitespace characters; there needn't be any alphanumerics in any
+# of the words).
